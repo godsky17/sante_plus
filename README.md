@@ -1,6 +1,3 @@
-Voici le **fichier `README.md` complet en Markdown**, prêt à être copié et utilisé dans ton dépôt GitHub pour le projet **Santé Plus** :
-
-```markdown
 # 🩺 Santé Plus
 
 **Santé Plus** est une application web monolithique développée avec **Laravel** (backend) et **HTML/CSS/JavaScript** (frontend). Elle permet la gestion de rendez-vous médicaux, la téléconsultation et bien plus encore.
@@ -40,7 +37,6 @@ Voici le **fichier `README.md` complet en Markdown**, prêt à être copié et u
 ## 📁 Structure du projet
 
 ```
-
 sante-plus/
 ├── app/                 # Logique métier (Models, Controllers, Services)
 ├── bootstrap/           # Initialisation de l'application
@@ -59,8 +55,7 @@ sante-plus/
 ├── .env.example         # Fichier d'exemple d’environnement
 ├── composer.json        # Dépendances PHP
 └── package.json         # Dépendances JS
-
-````
+```
 
 ---
 
@@ -88,7 +83,7 @@ php artisan migrate --seed
 
 npm run dev
 php artisan serve
-````
+```
 
 ---
 
@@ -112,7 +107,7 @@ php artisan test         # Lancer les tests Laravel
 
 ## 📷 Captures d’écran
 
-*Ajoutez ici quelques captures d’écran de l’interface utilisateur, des tableaux de bord ou des fonctionnalités clés.*
+_Ajoutez ici quelques captures d’écran de l’interface utilisateur, des tableaux de bord ou des fonctionnalités clés._
 
 ---
 
@@ -124,20 +119,15 @@ Ce projet est open-source sous la licence [MIT](LICENSE).
 
 ## 👥 Équipe
 
-* 👨‍💻 Ton Nom – Backend / Chef de projet
-* 🎨 Nom Collaborateur – Frontend
-* 📋 Autres – QA / Contributeurs externes
+- 👨‍💻 Ton Nom – Backend / Chef de projet
+- 🎨 Nom Collaborateur – Frontend
+- 📋 Autres – QA / Contributeurs externes
 
 ---
 
 ## 📬 Contact
 
-* Email : [contact@santeplus.example](mailto:contact@santeplus.example)
-* Site : [www.santeplus.example](https://www.santeplus.example)
+- Email : contact@santeplus.example
+- Site : [www.santeplus.example](https://www.santeplus.example)
 
 ---
-
-```
-
-Souhaite-tu que je t’en génère une version prête à télécharger ou que je t’aide à remplir une des sections spécifiques ?
-```
