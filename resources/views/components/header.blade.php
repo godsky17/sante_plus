@@ -16,14 +16,14 @@
     <!-- Desktop Navigation -->
     <div class="d-none d-lg-flex">
         <ul class="nav mb-2 mb-lg-0">
-            <li class="nav-item"><a href="#accueil" class="nav-link px-2 link-dark">Accueil</a></li>
+            <li class="nav-item"><a href="{{ route('accueil') }}" class="nav-link px-2 link-dark">Accueil</a></li>
             <li class="nav-item"><a href="#services" class="nav-link px-2 link-dark">Services</a></li>
             <li class="nav-item"><a href="#blog" class="nav-link px-2 link-dark">Blog</a></li>
             <li class="nav-item"><a href="#faq" class="nav-link px-2 link-dark">FAQ</a></li>
         </ul>
 
         <div class="ms-4">
-            <a href="" class="btn btn-outline-primary rounded-pill me-2">Connexion</a>
+            <a href="{{ url('/auth/connexion') }}" class="btn btn-outline-primary rounded-pill me-2">Connexion</a>
             <a href="" class="btn btn-primary rounded-pill">Prendre rendez-vous</a>
         </div>
     </div>
