@@ -3,20 +3,12 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view("index");
-});
-
-Route::get('/auth/connexion', function () {
-    return view('auth.connexion');
-});
+    return view('index');
+})->name('accueil');
 
 Route::get('/auth/connexion', function () {
     return view('auth.connexion');
 })->name('connexion');
-
-Route::get('/', function () {
-    return view('index');
-})->name('accueil');
 
 Route::get('/inscription', function () {
     return view("auth.inscription");
