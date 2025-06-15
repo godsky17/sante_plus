@@ -81,7 +81,7 @@
 
                     <!-- Register buttons -->
                     <div class="text-center">
-                        <p>Vous avez deja un compte ? <a href="./connexion.html">Connectez-vous.</a></p>
+                        <p>Vous avez deja un compte ? <a href="{{ route('connexion') }}">Connectez-vous.</a></p>
                         <p>Connectez-vous avec:</p>
                         <div class="row">
                             <ul class="d-flex social-media">
