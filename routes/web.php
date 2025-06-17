@@ -3,13 +3,12 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view("index");
-});
+    return view('index');
+})->name('accueil');
 
-
-Route::get('/connexion', function () {
-    return view("auth.connexion");
-});
+Route::get('/auth/connexion', function () {
+    return view('auth.connexion');
+})->name('connexion');
 
 Route::get('/inscription', function () {
     return view("auth.inscription");
@@ -26,7 +25,6 @@ Route::get('/symptomes', function () {
 Route::get('/specialistes', function () {
     return view("appointments.specialistes");
 });
-
 
 Route::get('/appointments/remerciement', function () {
     return view("appointments.remerciement_rdv");
