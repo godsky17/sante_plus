@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PatientController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Utilisateur;
 use App\Http\Controllers\patient\authController;
@@ -52,6 +53,8 @@ Route::get('/appointments/docteurs', function () {
 Route::get('/dashboard-user', function () {
     return view("admin.index");
 });
+
+Route::post('register', [PatientController::class, 'register'])->name('patient.register');
 
 
 Route::get('/test-mongo', function () {
