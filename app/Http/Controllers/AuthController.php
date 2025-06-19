@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\patient;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class authController extends Controller
+class AuthController extends Controller
 {
+    
     /**
      * Retour la page d'inscription
      * @return void
@@ -18,12 +19,11 @@ class authController extends Controller
 
     public function inscriptionForm(Request $request)
     {
-        //dd($request->all());
+        
         $validated = $request->validate([
             'user_type' => 'required'
         ]);
 
-
-        return view("auth.inscription", ['user' => $request]);
+        return view("auth.inscription", ['user_type' => $request->user_type]);
     }
 }

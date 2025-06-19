@@ -3,13 +3,9 @@
 use App\Http\Controllers\PatientController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Utilisateur;
-use App\Http\Controllers\patient\authController;
+use App\Http\Controllers\AuthController;
 
 Route::get('/', function () {
-    return view("welcome");
-});
-
-Route::get('/accueil', function () {
     return view("index");
 })->name('accueil');
 
@@ -18,17 +14,9 @@ Route::get('/auth/connexion', function () {
     return view("auth.connexion");
 })->name('auth.connexion');
 
-Route::get('/auth/inscription', function () {
-    return view("auth.inscription");
-})->name('auth.inscription');
-
-Route::get('/appointments/inscription/qui', function () {
-    return view("auth.inscription_part_2");
-})->name('appointments.inscription');
-
 // Inscription
-Route::get('/inscription', [authController::class, 'whoAreYou'])->name('inscription');
-Route::get('/inscription/form', [authController::class, "inscriptionForm"])->name('inscription.form');
+Route::get('/inscription', [AuthController::class, 'whoAreYou'])->name('inscription');
+Route::get('/inscription/form', [AuthController::class, "inscriptionForm"])->name('inscription.form');
 
 Route::get('/appointments/symptomes', function () {
     return view("appointments.symptomes");

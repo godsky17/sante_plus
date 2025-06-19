@@ -87,18 +87,18 @@
         </div>
 
         <script>
-        // Attendre que le DOM soit prêt
-        document.addEventListener('DOMContentLoaded', function () {
-            const alertBox = document.getElementById('alert-errors');
-            if (alertBox) {
-                setTimeout(() => {
-                    // Retire l'alerte en douceur
-                    alertBox.classList.remove('show');
-                    alertBox.classList.add('fade');
-                    // Supprime complètement du DOM après animation
-                    setTimeout(() => alertBox.remove(), 500);
-                }, 4000); // 4000 ms = 4 secondes
-            }
-        });
-</script>
+                // Attendre que le DOM soit prêt
+                document.addEventListener('DOMContentLoaded', function () {
+                    const alertBox = document.getElementById('alert-errors');
+                    if (alertBox) {
+                        setTimeout(() => {
+                            // Retire l'alerte en douceur
+                            alertBox.classList.remove('show');
+                            alertBox.classList.add('fade');
+                            // Supprime complètement du DOM après animation
+                            setTimeout(() => alertBox.remove(), 500);
+                        }, 4000); // 4000 ms = 4 secondes
+                    }
+                });
+        </script>
 @endsection
