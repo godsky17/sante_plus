@@ -38,6 +38,31 @@ Route::get('/appointments/docteurs', function () {
     return view("appointments.docteurs");
 });
 
+Route::get('/dashboard-user', function () {
+    return view("admin.index");
+});
+
+
+Route::get('/test-mongo', function () {
+    try {
+        $users = User::all();
+
+        if ($users->isEmpty()) {
+            return 'Aucun utilisateur trouvé dans MongoDB.';
+        }
+
+        $output = "<h2>Utilisateurs MongoDB :</h2><ul>";
+        foreach ($users as $user) {
+            $output .= "<li>{$user->name} ({$user->email})</li>";
+        }
+        $output .= "</ul>";
+
+        return $output;
+
+    } catch (\Exception $e) {
+        return "❌ Erreur MongoDB : " . $e->getMessage();
+    }
+});
 
 
 
