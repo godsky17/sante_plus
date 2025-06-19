@@ -1,9 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Utilisateur;
+use App\Http\Controllers\patient\authController;
 
 Route::get('/', function () {
-<<<<<<< HEAD
     return view("welcome");
 });
 
@@ -15,14 +16,6 @@ Route::get('/accueil', function () {
 Route::get('/auth/connexion', function () {
     return view("auth.connexion");
 })->name('auth.connexion');
-=======
-    return view('index');
-})->name('accueil');
-
-Route::get('/auth/connexion', function () {
-    return view('auth.connexion');
-})->name('connexion');
->>>>>>> 7d427d248fffd527edbc38d0bf3714f011d08f85
 
 Route::get('/auth/inscription', function () {
     return view("auth.inscription");
@@ -31,6 +24,10 @@ Route::get('/auth/inscription', function () {
 Route::get('/appointments/inscription/qui', function () {
     return view("auth.inscription_part_2");
 })->name('appointments.inscription');
+
+// Inscription
+Route::get('/inscription', [authController::class, 'whoAreYou'])->name('inscription');
+Route::get('/inscription/form', [authController::class, "inscriptionForm"])->name('inscription.form');
 
 Route::get('/appointments/symptomes', function () {
     return view("appointments.symptomes");
@@ -59,7 +56,7 @@ Route::get('/dashboard-user', function () {
 
 Route::get('/test-mongo', function () {
     try {
-        $users = User::all();
+        $users = Utilisateur::all();
 
         if ($users->isEmpty()) {
             return 'Aucun utilisateur trouvé dans MongoDB.';
@@ -67,7 +64,7 @@ Route::get('/test-mongo', function () {
 
         $output = "<h2>Utilisateurs MongoDB :</h2><ul>";
         foreach ($users as $user) {
-            $output .= "<li>{$user->name} ({$user->email})</li>";
+            $output .= "<li>{$user->nom}</li>";
         }
         $output .= "</ul>";
 
@@ -78,5 +75,12 @@ Route::get('/test-mongo', function () {
     }
 });
 
+
+Route::get('/test-create', function(){
+    $users = new Utilisateur();
+    $users->nom = "Hello";
+    $save = $users->save();
+    return $save; // 1
+});
 
 

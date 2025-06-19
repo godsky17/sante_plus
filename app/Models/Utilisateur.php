@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use MongoDB\Laravel\Eloquent\Model;
 
 class Utilisateur extends Model
 {
     protected $connection = 'mongodb';
-    protected $collection = 'utilisateurs';
+    protected $collection = 'utilisateur';
+
     protected $fillable = [
         'nom', 'prenom', 'email', 'mot_de_passe', 'contact', 'adresse', 'genre', 'date_naissance', 'type_utilisateur'
     ];
