@@ -107,6 +107,9 @@
                     </div>
 
                     <!-- Register buttons -->
+                    <?= 
+                        $user_type
+                    ?>
                     <div class="text-center">
                         <p>Vous avez deja un compte ? <a href="{{ route('auth.connexion') }}">Connectez-vous.</a></p>
                         <p>Connectez-vous avec:</p>
