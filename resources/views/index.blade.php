@@ -4,6 +4,13 @@
 
 @section('content')
 
+@if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+
+
 <section class="hero" id="accueil">
         <div class="container col-xxl-8">
             <div class="row flex-lg-row-reverse align-items-center g-5">

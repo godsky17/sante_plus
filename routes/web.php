@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PatientController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -12,7 +13,7 @@ Route::get('/auth/connexion', function () {
 
 Route::get('/inscription', function () {
     return view("auth.inscription");
-});
+})->name('auth.inscription');
 
 Route::get('/inscription/qui', function () {
     return view("auth.inscription_part_2");
@@ -41,6 +42,8 @@ Route::get('/appointments/docteurs', function () {
 Route::get('/dashboard-user', function () {
     return view("admin.index");
 });
+
+Route::post('register', [PatientController::class, 'register'])->name('patient.register');
 
 
 Route::get('/test-mongo', function () {

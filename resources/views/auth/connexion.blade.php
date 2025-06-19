@@ -53,7 +53,7 @@
 
                 <!-- Register buttons -->
                 <div class="text-center">
-                    <p>Vous n'avez pas un compte ? <a href="./inscription.html">Inscrivez-vous.</a></p>
+                    <p>Vous n'avez pas un compte ? <a href="{{ route('auth.inscription') }}">Inscrivez-vous.</a></p>
                     <p>Connectez-vous avec:</p>
                     <div class="row">
                         <ul class="d-flex social-media">

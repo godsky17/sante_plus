@@ -3,7 +3,20 @@
 @section('title', 'Inscription - Santé Plus')
 
 @section("auth-content")
-<form class="">
+
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $erreur)
+                <li>{{ $erreur }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+<form action="{{ route('patient.register') }}" method="POST">
+
+                        @csrf
                     <div class="title text-center mb-5">
                         <h1 class="display-5 fw-bold">Inscription</h1>
                     </div>
@@ -11,17 +24,20 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingInput"
-                                    placeholder="">
+                                <input type="text" class="form-control @error('nom') is-invalid @enderror" id="floatingInput" name="nom" placeholder="">
                                 <label for="floatingInput">Nom</label>
+                                @error('nom')
+                                    <div class="invalid-feedback d-block">{{ $message }}</div>
+                                @enderror
                             </div>
-
                         </div>
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="floatingPassword"
-                                    placeholder="">
+                                <input type="text" class="form-control @error('prenom') is-invalid @enderror" id="floatingPassword" name="prenom" placeholder="">
                                 <label for="floatingPassword">Prénom</label>
+                                @error('prenom')
+                                    <div class="invalid-feedback d-block">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
                     </div>
@@ -29,17 +45,20 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-floating mb-3">
-                                <input type="email" class="form-control" id="floatingInput"
-                                    placeholder="">
+                                <input type="email" class="form-control @error('email') is-invalid @enderror" id="floatingInput" name="email" placeholder="">
                                 <label for="floatingInput">Email</label>
+                                @error('email')
+                                    <div class="invalid-feedback d-block">{{ $message }}</div>
+                                @enderror
                             </div>
-
                         </div>
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="floatingPassword"
-                                    placeholder="">
+                                <input type="text" class="form-control @error('telephone') is-invalid @enderror" id="floatingPassword" name="telephone" placeholder="">
                                 <label for="floatingPassword">Numéro de téléphone</label>
+                                @error('telephone')
+                                    <div class="invalid-feedback d-block">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
                     </div>
@@ -47,25 +66,34 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-floating mb-3">
-                                <input type="password" class="form-control" id="floatingInput" placeholder="password">
+                                <input type="password" class="form-control @error('password') is-invalid @enderror" id="floatingInput" name="password" placeholder="password">
                                 <label for="floatingInput">Mot de passe</label>
+                                @error('password')
+                                    <div class="invalid-feedback d-block">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
 
                         <div class="col-md-12">
                             <div class="form-floating mb-3">
-                                <input type="password" class="form-control" id="floatingInput" placeholder="password">
+                                <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror" id="floatingInput" name="password_confirmation" placeholder="password">
                                 <label for="floatingInput">Confirmation mot de passe</label>
+                                @error('password_confirmation')
+                                    <div class="invalid-feedback d-block">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
                     </div>
 
                     <div class="col-12 mb-2">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="gridCheck">
+                            <input class="form-check-input @error('conditions') is-invalid @enderror" type="checkbox" name="conditions" id="gridCheck">
                             <label class="form-check-label" for="gridCheck">
                                 J'accepte toutes les conditions et les politiques de confidentialité
                             </label>
+                            @error('conditions')
+                                <div class="invalid-feedback d-block">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
 
@@ -73,11 +101,10 @@
                         <!-- Submit button -->
                         <div class="row m-0 p-0">
                             <div class="col-md-12 m-0">
-                                <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary col-12 mb-4">S'inscrire</button>
+                                <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary col-12 mb-4">S'inscrire</button>
                             </div>
                         </div>
                     </div>
-                    
 
                     <!-- Register buttons -->
                     <div class="text-center">
