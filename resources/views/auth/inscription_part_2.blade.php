@@ -9,8 +9,18 @@
                 <div class="title text-black text-center mb-5">
                     <h1 class="display-5 fw-bold">Qui êtes-vous ?</h1>
                 </div>
+
+                @if ($errors->any())
+                    <div class="alert alert-danger alert-dismissible fade show mb-3" role="alert" id="alert-errors">
+                        <ul class="mb-0 list-group">
+                            @foreach ($errors->all() as $erreur)
+                                <li class="list-group-item list-group-item-danger border-0 text-center">{{ $erreur }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
             
-                <form action="">
+                <form action="{{ route('inscription.form') }}" method='GET'>
                     <div class="card_container row">
 
                         <div class="col-sm-12 col-md-4 mb-4">
@@ -69,10 +79,26 @@
 
                     </div>
                     <div class="d-flex justify-content-between align-items-center mt-5 py-5">
-                        <a href="" class="btn btn-outline-primary px-5">Retour</a>
-                        <a href="" class="btn btn-outline-primary px-5">Continuer</a>
+                        <a href="{{ route('accueil') }}" class="btn btn-outline-primary px-5">Retour</a>
+                        <button class="btn btn-outline-primary px-5"  type="submit">Continuer</button>
                     </div>
                 </form>
             </div>
         </div>
+
+        <script>
+        // Attendre que le DOM soit prêt
+        document.addEventListener('DOMContentLoaded', function () {
+            const alertBox = document.getElementById('alert-errors');
+            if (alertBox) {
+                setTimeout(() => {
+                    // Retire l'alerte en douceur
+                    alertBox.classList.remove('show');
+                    alertBox.classList.add('fade');
+                    // Supprime complètement du DOM après animation
+                    setTimeout(() => alertBox.remove(), 500);
+                }, 4000); // 4000 ms = 4 secondes
+            }
+        });
+</script>
 @endsection
