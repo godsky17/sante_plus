@@ -4,7 +4,7 @@
 
 @section("auth-content")
 
-@if ($errors->any())
+{{-- @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
             @foreach ($errors->all() as $erreur)
@@ -12,7 +12,7 @@
             @endforeach
         </ul>
     </div>
-@endif
+@endif --}}
 
 <form action="{{ route('patient.register') }}" method="POST">
 
@@ -107,9 +107,6 @@
                     </div>
 
                     <!-- Register buttons -->
-                    <?= 
-                        $user_type
-                    ?>
                     <div class="text-center">
                         <p>Vous avez deja un compte ? <a href="{{ route('auth.connexion') }}">Connectez-vous.</a></p>
                         <p>Connectez-vous avec:</p>
