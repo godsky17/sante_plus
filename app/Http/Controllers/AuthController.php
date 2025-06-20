@@ -139,4 +139,35 @@ class AuthController extends Controller
 
         return redirect('/connexion')->with('success', 'Vous êtes bien déconnecté.');
     }
+
+    public function login(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|string',
+        ]);
+
+        // Rechercher l'utilisateur
+        $user = Utilisateur::where('email', $request->email)->first();
+
+        // Vérifier les informations
+        if (!$user || !Hash::check($request->password, $user->mot_de_passe)) {
+            return back()->with('error', 'Email ou mot de passe incorrect.');
+        }
+
+        // Connexion
+        Auth::login($user);
+
+        // Redirection selon le type
+        switch ($user->type_utilisateur) {
+            case 'admin_hopital':
+                return redirect()->route('hopital.dashoard');
+            case 'medecin':
+                return redirect()->route('medecin.dashboard');
+            case 'patient':
+                return redirect()->route('patient.dashboard');
+            default:
+                return redirect('/')->with('error', 'Type d\'utilisateur non reconnu.');
+        }
+    }
 }

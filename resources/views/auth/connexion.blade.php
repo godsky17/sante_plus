@@ -3,8 +3,8 @@
 @section('title', 'Connexion - Santé Plus')
 
 @section("auth-content")
-            <form class="">
-
+            <form class=""  method='POST' action="{{ route('login') }}">
+            @csrf 
                 <div class="title text-center mb-5">
                     <h1 class="display-5 fw-bold">Connexion</h1>
                 </div>
@@ -14,6 +14,9 @@
                         <div class="form-floating mb-3">
                             <input type="email" class="form-control" id="floatingInput" placeholder="email@gmail.com">
                             <label for="floatingInput">Email</label>
+                             @error('email')
+                                    <div class="invalid-feedback d-block">{{ $message }}</div>
+                                @enderror
                         </div>
                     </div>
 
@@ -21,6 +24,9 @@
                         <div class="form-floating mb-3">
                             <input type="password" class="form-control" id="floatingInput" placeholder="password">
                             <label for="floatingInput">Mot de passe</label>
+                             @error('password')
+                                    <div class="invalid-feedback d-block">{{ $message }}</div>
+                                @enderror
                         </div>
                     </div>
                 </div>
@@ -44,7 +50,7 @@
                     <!-- Submit button -->
                     <div class="row m-0 p-0">
                         <div class="col-md-12 m-0">
-                            <button type="button" data-mdb-button-init data-mdb-ripple-init
+                            <button type="submit" data-mdb-button-init data-mdb-ripple-init
                                 class="btn btn-primary col-12 mb-4">Connexion</button>
                         </div>
                     </div>

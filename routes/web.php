@@ -11,7 +11,7 @@ Route::get('/', function () {
 })->name('accueil');
 
 
-Route::get('/connexion', function () {
+Route::get('/form', function () {
     return view("auth.connexion");
 })->name('auth.connexion');
 
@@ -20,6 +20,9 @@ Route::get('/inscription', [AuthController::class, 'whoAreYou'])->name('inscript
 Route::get('/inscription/form', [AuthController::class, "inscriptionForm"])->name('inscription.form');
 Route::post('/hopital/register', [AuthController::class, "registerHopital"])->name('register.hopital');
 Route::post('/deconnexion', [AuthController::class, "logout"])->name('logout');
+Route::post('/connexion', [AuthController::class, "login"])->name('login');
+// Login
+
 // HOPITAL
 Route::get('/hopital', [HopitalController::class, "dashboard"])->name('hopital.dashoard');
 
