@@ -28,6 +28,8 @@ Route::get('/remerciements', [AuthController::class, "remerciements"])->name('re
 // HOPITAL
 Route::get('/hopital', [HopitalController::class, "dashboard"])->name('hopital.dashboard');
 
+Route::get('/patient', [PatientController::class, "dashboard"])->name('patient.dashboard');
+
 Route::get('/appointments/symptomes', function () {
     return view("appointments.symptomes");
 })->name('appointments.symptomes');

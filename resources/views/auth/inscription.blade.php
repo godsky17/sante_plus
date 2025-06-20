@@ -16,7 +16,8 @@
 
 <form action="{{ route('patient.register') }}" method="POST">
 
-                        @csrf
+                    
+    @csrf
                     <div class="title text-center mb-5">
                         <h1 class="display-5 fw-bold">Inscription</h1>
                     </div>
