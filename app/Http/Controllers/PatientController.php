@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Patient;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -61,22 +62,21 @@ class PatientController extends Controller
         
         try {
             // Créer le nouvel utilisateur/patient
-            $patient = new Patient();
-            $patient->nom = $request->nom;
-            $patient->prenom = $request->prenom;
-            $patient->email = $request->email;
-            $patient->telephone = $request->telephone;
-            $patient->password = Hash::make($request->password);
-            $patient->role = 'patient';
-            $patient->email_verified_at = null;
-
-            $patient->save();
+            $user = new User;
+            $user->nom = $request->nom;
+            $user->prenom = $request->prenom;
+            $user->email = $request->email;
+            $user->telephone = $request->telephone;
+            $user->mot_de_passe = $request->password; // mot de passe hashé déjà
+            $user->role = 'patient';
+            $user->email_verified_at = null;
+            $user->save();
 
             // Connexion automatique après inscription (optionnel)
-            Auth::login($patient);
+            Auth::login($user);
 
             // Redirection avec message de succès
-            return redirect()->route('accueil') // ou la route de votre choix
+            return redirect()->route('patient.dashboard') // ou la route de votre choix
                 ->with('success', 'Inscription réussie ! Bienvenue sur Santé Plus.');
 
         } catch (\Exception $e) {
@@ -133,7 +133,6 @@ class PatientController extends Controller
         if (Auth::attempt($credentials, $remember)) {
             // Régénérer la session pour éviter la fixation de session
             $request->session()->regenerate();
-
             // Récupérer le patient connecté
             $patient = Auth::user();
 
@@ -148,6 +147,12 @@ class PatientController extends Controller
                 'email' => 'Ces identifiants ne correspondent pas à nos enregistrements.',
             ])
             ->withInput($request->except('password'));
+    }
+
+    public function dashboard()
+    {
+        // Afficher le tableau de bord du patient
+        return view('admin.patient.index'); // Votre vue de tableau de bord
     }
 
 
