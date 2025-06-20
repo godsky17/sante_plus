@@ -4,12 +4,11 @@
 
 @section("auth-content")
 
-<form action="{{ route('medecin.register') }}" method="POST">
+<form action="{{ route('register.medecin') }}" method="POST">
 
 
-                {{--
 
-                @if ($errors->any())
+                {{-- @if ($errors->any())
                     <div class="    ">
                         <ul>
                             @foreach ($errors->all() as $error)
@@ -17,7 +16,7 @@
                             @endforeach
                         </ul>
                     </div>
-                @endif
+                @endif --}}
 
                 @if (session('error'))
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -25,7 +24,6 @@
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div> 
                 @endif
-                --}}
                     @csrf
                     <div class="title text-center mb-5">
                         <h1 class="display-5 fw-bold">Inscription</h1>

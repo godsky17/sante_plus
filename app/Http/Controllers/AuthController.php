@@ -35,8 +35,9 @@ class AuthController extends Controller
             case 'hopital':
                 return view("auth.hopital.inscription");
                 break;
-            case 'medecin':
-                # code...
+            case 'docteur':
+                $hopitals = Hopital::all();
+                return view("auth.medecin.inscription", ['hopitals' => $hopitals]);
                 break;
             case 'patient':
                 return view("auth.inscription");
@@ -123,10 +124,54 @@ class AuthController extends Controller
             // 🔐 Connexion
             Auth::login($utilisateur);
 
-            return redirect()->route("hopital.dashoard")->with('success', 'Inscription réussie !');
+            return redirect()->route("hopital.dashboard")->with('success', 'Inscription réussie !');
         } catch (Exception $e) {
             Log::error('Erreur lors de l\'inscription de l\'hôpital : ' . $e->getMessage());
 
+            return back()->withInput()->with('error', 'Une erreur est survenue : ' . $e->getMessage());
+        }
+    }
+
+    public function registerMedecin(Request $request)
+    {
+        $request->validate([
+            'nom' => 'required|string|max:100',
+            'prenom' => 'required|string|max:100',
+            'email' => 'required|email|max:255|unique:utilisateurs,email',
+            'contact' => 'string|unique:utilisateurs,contact',
+            'adresse' => 'string|max:255',
+            'genre' => 'in:homme,femme,autre',
+            'date_naissance' => 'date',
+            'specialite' => 'string|max:100',
+            'id_hopital' => 'required|exists:hopitals,_id',
+        ], [
+            'email.unique' => 'Cet email est déjà utilisé.',
+            'contact.unique' => 'Ce numéro est déjà utilisé.',
+            'id_hopital.exists' => 'Hôpital introuvable.',
+        ]);
+
+        try {
+            $utilisateur = new User();
+            $utilisateur->nom = $request->nom;
+            $utilisateur->prenom = $request->prenom;
+            $utilisateur->email = $request->email;
+            $utilisateur->mot_de_passe = Hash::make($request->password);
+            $utilisateur->contact = $request->contact;
+            $utilisateur->adresse = $request->adresse;
+            $utilisateur->genre = $request->genre;
+            $utilisateur->date_naissance = $request->date_naissance;
+            $utilisateur->type_utilisateur = 'medecin';
+            $utilisateur->statut = 'en attente'; // ou "actif"
+            $utilisateur->id_hopital = $request->id_hopital;
+            $utilisateur->specialite = $request->specialite;
+            $utilisateur->disponibilite = []; // optionnel
+            $utilisateur->save();
+
+            Auth::login($utilisateur);
+
+            return redirect()->route('remerciements')->with('success', 'Inscription réussie !');
+        } catch (\Exception $e) {
+            Log::error('Erreur inscription médecin : ' . $e->getMessage());
             return back()->withInput()->with('error', 'Une erreur est survenue : ' . $e->getMessage());
         }
     }
@@ -137,7 +182,7 @@ class AuthController extends Controller
         request()->session()->invalidate();  // Invalide la session
         request()->session()->regenerateToken(); // Regénère le token CSRF
 
-        return redirect('/connexion')->with('success', 'Vous êtes bien déconnecté.');
+        return redirect('/form')->with('success', 'Vous êtes bien déconnecté.');
     }
 
     public function login(Request $request)
@@ -148,7 +193,7 @@ class AuthController extends Controller
         ]);
 
         // Rechercher l'utilisateur
-        $user = Utilisateur::where('email', $request->email)->first();
+        $user = User::where('email', $request->email)->first();
 
         // Vérifier les informations
         if (!$user || !Hash::check($request->password, $user->mot_de_passe)) {
@@ -157,17 +202,21 @@ class AuthController extends Controller
 
         // Connexion
         Auth::login($user);
-
         // Redirection selon le type
         switch ($user->type_utilisateur) {
-            case 'admin_hopital':
-                return redirect()->route('hopital.dashoard');
+            case 'admin':
+                return redirect()->route('hopital.dashboard');
             case 'medecin':
                 return redirect()->route('medecin.dashboard');
             case 'patient':
                 return redirect()->route('patient.dashboard');
             default:
-                return redirect('/')->with('error', 'Type d\'utilisateur non reconnu.');
+                return redirect('/form')->with('error', 'Type d\'utilisateur non reconnu.');
         }
+    }
+
+    public function remerciements()
+    {
+        return view('auth.medecin.remerciement');
     }
 }
