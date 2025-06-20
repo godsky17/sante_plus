@@ -19,12 +19,14 @@ Route::get('/form', function () {
 Route::get('/inscription', [AuthController::class, 'whoAreYou'])->name('inscription');
 Route::get('/inscription/form', [AuthController::class, "inscriptionForm"])->name('inscription.form');
 Route::post('/hopital/register', [AuthController::class, "registerHopital"])->name('register.hopital');
+Route::post('/medecin/register', [AuthController::class, "registerMedecin"])->name('register.medecin');
 Route::post('/deconnexion', [AuthController::class, "logout"])->name('logout');
 Route::post('/connexion', [AuthController::class, "login"])->name('login');
+Route::get('/remerciements', [AuthController::class, "remerciements"])->name('remerciements');
 // Login
 
 // HOPITAL
-Route::get('/hopital', [HopitalController::class, "dashboard"])->name('hopital.dashoard');
+Route::get('/hopital', [HopitalController::class, "dashboard"])->name('hopital.dashboard');
 
 Route::get('/appointments/symptomes', function () {
     return view("appointments.symptomes");

@@ -12,7 +12,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="floatingInput" placeholder="email@gmail.com">
+                            <input type="email" class="form-control" id="floatingInput" placeholder="email@gmail.com" name='email'>
                             <label for="floatingInput">Email</label>
                              @error('email')
                                     <div class="invalid-feedback d-block">{{ $message }}</div>
@@ -22,7 +22,7 @@
 
                     <div class="col-md-12">
                         <div class="form-floating mb-3">
-                            <input type="password" class="form-control" id="floatingInput" placeholder="password">
+                            <input type="password" class="form-control" id="floatingInput" placeholder="password" name="password">
                             <label for="floatingInput">Mot de passe</label>
                              @error('password')
                                     <div class="invalid-feedback d-block">{{ $message }}</div>
