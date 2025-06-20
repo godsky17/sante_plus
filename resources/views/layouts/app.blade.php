@@ -12,7 +12,7 @@
     <!-- CSS -->
     <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    
+    @yield('css')
     @stack('styles')
 </head>
 <body>
@@ -26,6 +26,7 @@
     
     <!-- Scripts -->
     <script src="{{ asset('js/bootstrap.js') }}" defer></script>
+    @yield('js')
     @stack('scripts')
 </body>
 </html>

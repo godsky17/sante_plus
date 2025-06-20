@@ -4,19 +4,27 @@ use App\Http\Controllers\PatientController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Utilisateur;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HopitalController;
 
 Route::get('/', function () {
     return view("index");
 })->name('accueil');
 
 
-Route::get('/auth/connexion', function () {
+Route::get('/form', function () {
     return view("auth.connexion");
 })->name('auth.connexion');
 
 // Inscription
 Route::get('/inscription', [AuthController::class, 'whoAreYou'])->name('inscription');
 Route::get('/inscription/form', [AuthController::class, "inscriptionForm"])->name('inscription.form');
+Route::post('/hopital/register', [AuthController::class, "registerHopital"])->name('register.hopital');
+Route::post('/deconnexion', [AuthController::class, "logout"])->name('logout');
+Route::post('/connexion', [AuthController::class, "login"])->name('login');
+// Login
+
+// HOPITAL
+Route::get('/hopital', [HopitalController::class, "dashboard"])->name('hopital.dashoard');
 
 Route::get('/appointments/symptomes', function () {
     return view("appointments.symptomes");
