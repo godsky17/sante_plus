@@ -39,7 +39,7 @@
         </div>
     </div>
     <div class="d-flex justify-content-end align-items-center my-5 py-5 ">
-                        <a href="" class="btn btn-primary rounded-pill px-5">Suivant</a>
+                        <a href="{{ route('appointments.profil_docteur')}}" class="btn btn-primary rounded-pill px-5">Suivant</a>
                     </div>
     </div>
 @endsection

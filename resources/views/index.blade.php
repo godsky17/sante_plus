@@ -34,13 +34,12 @@
             <div class="row g-4 py-5 row-cols-1 row-cols-lg-2">
                 <div class="col">
                     <div class="d-flex align-items-start bg-primary-me py-4 px-4 rounded">
-                            <div class="icon-square d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+                        <div class="icon-square d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
                             <img src="./assets/images/un-evenement.png" width="50px" height="50px" alt="">
                         </div>
                         <div>
-                            <h3 class="fs-2 text-white">Featured title</h3>
-                            <p class="">Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence
-                                and probably just keep going until we run out of words.</p>
+                            <h3 class="fs-2 text-white"> Prenez rendez-vous en ligneou en ligne</h3>
+                            <p class="">Prenez rendez-vous en ligne ou en présentiel en quelques clics avec le professionnel de santé de votre choix.</p>
                         </div>
                     </div>
                 </div>
@@ -51,9 +50,8 @@
                             <img src="./assets/images/un-evenement.png" width="50px" height="50px" alt="">
                         </div>
                         <div>
-                            <h3 class="fs-2 text-dark">Featured title</h3>
-                            <p class="">Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence
-                                and probably just keep going until we run out of words.</p>
+                            <h3 class="fs-2 text-dark"> Téléconsultation</h3>
+                            <p class="">Accédez à des consultations médicales à distance via visioconférence, directement depuis la plateforme.</p>
                         </div>
                     </div>
                 </div>
@@ -64,9 +62,8 @@
                             <img src="./assets/images/un-evenement.png" width="50px" height="50px" alt="">
                         </div>
                         <div>
-                            <h3 class="fs-2 text-dark">Featured title</h3>
-                            <p class="">Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence
-                                and probably just keep going until we run out of words.</p>
+                            <h3 class="fs-2 text-dark">Espace personnel sécurisé</h3>
+                            <p class="">Gérez vos informations, vos rendez-vous, vos ordonnances et votre historique médical en toute confidentialité.</p>
                         </div>
                     </div>
                 </div>
@@ -77,9 +74,8 @@
                             <img src="./assets/images/un-evenement.png" width="50px" height="50px" alt="">
                         </div>
                         <div>
-                            <h3 class="fs-2 text-dark">Featured title</h3>
-                            <p class="">Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence
-                                and probably just keep going until we run out of words.</p>
+                            <h3 class="fs-2 text-dark">Gestion administrative optimisée</h3>
+                            <p class="">Tableau de bord pour la gestion des utilisateurs (médecins, patients, administrateurs), planification, rapports et plus encore.</p>
                         </div>
                     </div>
                 </div>

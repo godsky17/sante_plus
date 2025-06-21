@@ -27,6 +27,14 @@ Route::get('/remerciements', [AuthController::class, "remerciements"])->name('re
 
 // HOPITAL
 Route::get('/hopital', [HopitalController::class, "dashboard"])->name('hopital.dashboard');
+Route::get('/hopital/medecins', [HopitalController::class, "medecinsEnAttente"])->name('hopital.medecins_attente');
+Route::post('/hopital/medecins/{id}/valider', [HopitalController::class, "validerMedecin"])->name('hopital.medecins.valider');
+Route::post('/hopital/medecins/{id}/rejeter', [HopitalController::class, "rejeterMedecin"])->name('hopital.medecins.rejeter');
+Route::get('/hopital/services', [HopitalController::class, "afficherServices"])->name('hopital.services');
+Route::get('/hopital/services-create', [HopitalController::class, "afficherServices"])->name('hopital.services.create');
+Route::put('/hopital/{$id}/services-update', [HopitalController::class, "updateServices"])->name('hopital.services.update');
+Route::get('/hopital/services-destroy', [HopitalController::class, "afficherServices"])->name('hopital.services.destroy');
+Route::post('/hopital/services-store', [HopitalController::class, "storeServices"])->name('hopital.services.store');
 
 Route::get('/patient', [PatientController::class, "dashboard"])->name('patient.dashboard');
 
@@ -85,5 +93,6 @@ Route::get('/test-create', function(){
     $save = $users->save();
     return $save; // 1
 });
+
 
 

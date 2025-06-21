@@ -7,10 +7,6 @@
         <div>
             <h3 class="fw-bold mb-3">Dashboard / Medecins</h3>
         </div>
-        <div class="ms-md-auto py-2 py-md-0">
-            <a href="#" class="btn btn-label-info btn-round me-2">Manage</a>
-            <a href="#" class="btn btn-primary btn-round">Add Customer</a>
-        </div>
     </div>
     <div class="row">
         <div class="col-md-12">
@@ -66,14 +62,14 @@
                                             @endif
                                         </td>
                                         <td class="text-end">
-                                            <form action="{{ route('medecins.valider', $medecin->_id) }}" method="POST"
+                                            <form action="{{ route('hopital.medecins.valider', $medecin->_id) }}" method="POST"
                                                 style="display:inline-block;">
                                                 @csrf
                                                 <button type="submit" class="btn btn-sm btn-success" title="Valider">
                                                     Valider
                                                 </button>
                                             </form>
-                                            <form action="{{ route('medecins.rejeter', $medecin->_id) }}" method="POST"
+                                            <form action="{{ route('hopital.medecins.rejeter', $medecin->_id) }}" method="POST"
                                                 style="display:inline-block;">
                                                 @csrf
                                                 <button type="submit" class="btn btn-sm btn-danger" title="Rejeter">

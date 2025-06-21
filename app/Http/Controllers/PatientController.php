@@ -169,4 +169,10 @@ class PatientController extends Controller
         return redirect()->route('accueil')
             ->with('success', 'Vous avez été déconnecté avec succès.');
     }
+
+    public function ordonances()
+    {
+        $ordonances = Ordonances::getOrdonances();
+        return view('admin.patient.index', ['ordonances' => $ordonances]);
+    }
 }

@@ -2,22 +2,30 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use MongoDB\Laravel\Eloquent\Model;
 
 class Ordonnance extends Model
 {
     protected $connection = 'mongodb';
-    protected $collection = 'ordonnances';
-    protected $fillable = ['id_consultation', 'id_patient', 'date_emission', 'contenu'];
+    protected $collection = 'ordonances';
 
-    public function patient()
-    {
-        return $this->belongsTo(Patient::class, 'id_patient');
-    }
+    protected $fillable = [
+        'id_medecin',
+        'id_patient',
+        'id_consultation',
+        'medicaments',
+        'instructions',
+        'date_edition'
+    ];
 
-    public function medecin()
+    protected $casts = [
+        'medicaments' => 'array',
+        'date_edition' => 'datetime',
+    ];
+
+    public static function getOrdonances()
     {
-        return $this->belongsTo(Medecin::class, 'id_medecin');
+        return self::all();
     }
 
 }
